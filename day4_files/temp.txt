@@ -1,0 +1,4 @@
+temp.txt contents:
+Hello how are you
+Hariharasselvam
+

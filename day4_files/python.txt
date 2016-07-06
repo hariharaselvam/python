@@ -1,0 +1,20 @@
+This is the tuturial file for python
+created by Hariharaselvam
+The python has the following facilities:
+	1.definition
+	2.list
+	3.dictionaries
+	4.tuples
+	5.classes
+	6.Exception handling
+	7.File management
+	8.database connectivity
+	9.common gateway interface
+	10.and many
+definition
+	It is similar to funtions in other programming languages like c. 
+It gets some input and returns some data as many formats. 
+There some different types to pass and get data to definitions from control. 
+list 
+	list is data type in python to hold list of items which can be anthing like integer, float, string, list, tuple, dictionary, object and so on. 
+we can perform many operations on list as append to add  an item at the end, insert an item in a position, edit an item in an index, delete some items or entire list

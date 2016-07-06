@@ -1,0 +1,31 @@
+profile1.txt
+File name: profile.txt
+Name: Hariharaselvam
+phone : 9994168966
+email : hariharaselvam8@gmail.com
+address : bangalore
+
+
+
+-----------------------------------
+profile2.txt
+Hariharaselvam
+Balasubramanian
+Arugankulam
+Rajapalayam
+Madurai
+Chennai
+Bangalore
+
+
+-----------------------------------
+profile3.txt
+File name: profile.txt
+Name: Hariharaselvam
+phone : 9994168966
+email : hariharaselvam8@gmail.com
+address : bangalore
+
+
+
+-----------------------------------

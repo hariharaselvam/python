@@ -1,0 +1,166 @@
+import re
+class Matrix:
+	def __init__(self,filestring=""):
+		try:
+			fo=open(filestring,"r");
+			lines=fo.readlines()
+			fo.close()
+		except IOError:
+			lines=filestring.split("\n")
+			
+		self.Ma=[]
+		for line in lines:
+			if line!="":
+				row=line.split()
+				self.Ma.append(row)
+		
+	def __str__(self):
+		matrixstring="Matrix  \n"
+		for row in self.Ma:
+			rowst=" ".join(row)
+			matrixstring=matrixstring+rowst+"\n"
+		return matrixstring
+
+	def __add__(self,other):
+		Ma=""
+		for i in range(len(self.Ma)):
+			row=""
+			for j in range(len(self.Ma[i])):
+				cell=int(self.Ma[i][j])+int(other.Ma[i][j])
+				row=row+str(cell)+" "
+			Ma=Ma+row+"\n"
+		return Matrix(Ma)
+
+	def __sub__(self,other):
+		Ma=""
+		for i in range(len(self.Ma)):
+			row=""
+			for j in range(len(self.Ma[i])):
+				cell=int(self.Ma[i][j])-int(other.Ma[i][j])
+				row=row+str(cell)+" "
+			Ma=Ma+row+"\n"
+		return Matrix(Ma)
+	
+	def __mul__(self,other):
+		Ma=""
+		for i in range(len(self.Ma)):
+			Li=""
+			for j in range(len(other.Ma[0])):
+				num=0
+      				for k in range(len(self.Ma[0])):
+           				num=num + (int(self.Ma[i][k]) * int(other.Ma[k][j]))
+				Li=Li+str(num)+" "
+			Ma=Ma+Li+"\n"
+		
+		return Matrix(Ma)
+
+	def isvalid(self):
+		column=len(self.Ma[0])
+		for row in self.Ma:
+			if len(row)!= column:
+				return False
+			for cell in row:
+				if re.search(r"\-?\d+",str(cell)):
+					pass
+				else:
+					return False
+				
+		return True
+
+	def getorder(self):
+		return len(self.Ma), len(self.Ma[0])
+
+	def isquare(self):
+		return len(self.Ma)==len(self.Ma[0])
+	
+	def swaprows(self,*t):
+		pairs=list(t)
+		for p in pairs:
+			r1=int(p[0])-1
+			r2=int(p[1])-1
+			if r1 >=0 and r1 <len(self.Ma) and r2 >=0 and r2 <len(self.Ma):
+				self.Ma[r1],self.Ma[r2]=self.Ma[r2],self.Ma[r1]
+
+	def swapcolumns(self,*t):
+		pairs=list(t)
+		for p in pairs:
+			r1=int(p[0])-1
+			r2=int(p[1])-1
+			if r1 >=0 and r1 <len(self.Ma[0]) and r2 >=0 and r2 <len(self.Ma[0]):
+				for i in range(len(self.Ma)):
+					self.Ma[i][r1],self.Ma[i][r2]=self.Ma[i][r2],self.Ma[i][r1]
+	def transpose(self):
+		Ma=self.Ma
+		ms=[]
+		for i in range(len(Ma[0])):
+			line=[x[i] for x in Ma]
+			ms.append(line)
+			
+		self.Ma=ms
+		
+
+	def write(self,filename):
+		fo=file(filename,"w")
+		for row in self.Ma:
+			line=" ".join(row)+"\n"
+			fo.write(line)
+		fo.close()
+
+M1=Matrix('temp1.dat')
+M2=Matrix('temp2.dat')
+M3=Matrix('temp3.dat')
+M4=Matrix('temp4.dat')
+
+print M1
+print "M1 is valid? =",M1.isvalid()
+print "M1 order?    =",M1.getorder()
+print "M1 is square?=",M1.isquare()
+
+print M2
+print "M2 is valid? =",M2.isvalid()
+print "M2 order?    =",M2.getorder()
+print "M2 is square?=",M2.isquare()
+
+print M3
+print "M3 is valid? =",M3.isvalid()
+print "M3 order?    =",M3.getorder()
+print "M3 is square?=",M3.isquare()
+
+print M4
+print "M4 is valid? =",M4.isvalid()
+print "M4 order?    =",M4.getorder()
+print "M4 is square?=",M4.isquare()
+
+print "Matrix addtion"
+ma=M1+M2
+print ma
+
+print "Matrix Subtraction"
+ma=M1-M2
+print ma
+
+print "Matrix multiplication"
+ma=M3*M4
+print ma
+
+print "Matrix multiplication"
+ma=M4*M3
+print ma
+
+print "Swap rows"
+print M1
+M1.swaprows((2,3),(4,5))
+print M1
+
+print "Swap columns"
+print M2
+M2.swapcolumns((1,2))
+print M2
+
+print "Transpose"
+print M3
+M3.transpose()
+print M3
+M4.write('temp6.dat')
+
+

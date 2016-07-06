@@ -1,0 +1,10 @@
+profile1.txt
+File name: profile.txt
+Name: Hariharaselvam
+phone : 9994168966
+email : hariharaselvam8@gmail.com
+address : bangalore
+
+
+
+-----------------------------------
